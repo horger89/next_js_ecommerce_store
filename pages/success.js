@@ -6,7 +6,7 @@ import { BsBagCheckFill } from "react-icons/bs";
 import { useStateContext } from "@/context/StateContext";
 
 const Success = () => {
-  const { setCartItems, setTotalPrice, setTotalQuantities } = useStateContext();
+  const { setCartItems, setTotalPrice, setTotalQuantities, cartItems } = useStateContext();
 
   useEffect(() => {
        localStorage.clear();
@@ -14,7 +14,7 @@ const Success = () => {
        setTotalPrice(0);
        setTotalQuantities(0);
        
-  },[]);
+  },[cartItems]);
 
   return (
     <div className="success-wraper">
