@@ -195,7 +195,7 @@ span.text-red {
 }
 .products-heading {
   text-align: center;
-  margin: 40px 0px;
+  margin: 0px 0px;
   color: #324d67;
 }
 .products-heading h2 {
@@ -404,14 +404,14 @@ span.text-red {
 .btn:hover {
   transform: scale(1.1, 1.1);
 }
-.product-detail-container {
+
+.product-detail-container{
   display: flex;
-  gap: 40px;
-  margin: 40px;
-  margin-top: 40px;
-  
-  color: #324d67;
- 
+ gap: 40px;
+ margin: 40px;
+ margin-top: 60px;
+ color: #324d67;
+
 }
 
 .product-detail-image {
@@ -750,4 +750,67 @@ span.text-red {
     width: 300px;
     margin: auto;
   }
+}
+
+.dropbtn {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 12px;
+  border-radius: 15px;
+  border: none;
+  font-size: 20px;
+  text-transform: uppercase;
+  background-color: #f02d34;
+  color: #fff;
+  cursor: pointer;
+  transform: scale(1, 1);
+  transition: transform 0.5s ease;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  margin: 40px 0px;
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  text-align: center;
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color:#f02d34;
+}
+
+.dropdown-menu-center {
+  left: 50% !important;
+  right: auto !important;
+  text-align: center !important;
+  transform: translate(-50%, 0) !important;
 }

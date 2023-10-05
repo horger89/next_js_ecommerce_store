@@ -55,6 +55,14 @@ export const StateContext = ({ children }) => {
   const [totalQuantities, setTotalQuantities] = useState(0);
   const [qty, setQty] = useState(1);
 
+  // new code here
+  useEffect(() => {
+    setCartItems(cartItemsStored);
+    setTotalQuantities(totalQuantitiesStored);
+    setTotalPrice(totalPriceStored);
+  }, []);
+  // till here
+
   let foundProduct;
   let index;
 
@@ -181,18 +189,6 @@ export const StateContext = ({ children }) => {
       }
     }
   };
-
-  console.log(cartItemsStored);
-  console.log(totalQuantitiesStored);
-  console.log(totalPriceStored);
-
-  // new code here
-  useEffect(() => {
-    setCartItems(cartItemsStored);
-    setTotalQuantities(totalQuantitiesStored);
-    setTotalPrice(totalPriceStored);
-  }, []);
-  // till here
 
   function incQty() {
     setQty((prevQty) => prevQty + 1);
