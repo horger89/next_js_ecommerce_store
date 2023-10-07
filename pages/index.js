@@ -1,13 +1,14 @@
 import React from "react";
 import { Product, FooterBanner, HeroBanner } from "../components";
 import { client } from "../lib/client";
+import { AiOutlineSearch } from "react-icons/ai";
 
 const Home = ({ products, bannerData, categories }) => {
   return (
     <>
       <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
 
-      <div className="products-heading">
+      <div className="category-serach-container">
         <div className="dropdown">
           <button className="dropbtn">Categories</button>
           <div className="dropdown-content dropdown-menu-center">
@@ -16,6 +17,18 @@ const Home = ({ products, bannerData, categories }) => {
             ))}
           </div>
         </div>
+
+        <div className="search">
+          <form>
+            <input type="text" placeholder=" Search.." name="search" />
+            <button type="submit" className="search-icon">
+              <AiOutlineSearch />
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div className="products-heading">
         <h2>Best Selling Products</h2>
         <p>Products of many variations</p>
       </div>
