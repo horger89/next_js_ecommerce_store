@@ -180,12 +180,11 @@ span.text-red {
   margin-top: 5px;
 }
 
-.center{
+.center {
   text-align: center;
 }
 
 .hero-banner-container h3 {
-
   font-size: 4rem;
   text-align: center;
 }
@@ -251,16 +250,15 @@ span.text-red {
   font-weight: 200;
 }
 .footer-banner-container {
-  padding: 70px 40px;
+  margin-top: 60px;
+  padding: 20px 20px;
   background-color: #f02d34;
   border-radius: 15px;
   position: relative;
-  height: 400px;
-  max-height: 22rem;
-  line-height: 1;
-  color: white;
+  height: 500px;
+  max-height: 28rem;
+  line-height: 0.9;
   width: 100%;
-  margin-top: 120px;
 }
 .banner-desc {
   display: flex;
@@ -277,6 +275,20 @@ span.text-red {
   font-weight: 500;
   cursor: pointer;
 }
+
+.footer-banner-container h3 {
+  margin-top: 10px;
+  font-size: 3rem;
+  text-align: center;
+}
+.footer-banner-container h1 {
+  margin-top: 10px;
+  color: white;
+  font-size: 5em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 .banner-desc .left h3 {
   font-weight: 900;
   font-size: 80px;
@@ -286,9 +298,7 @@ span.text-red {
   margin: 18px;
 }
 .footer-banner-image {
-  top: -35%;
-  right: 8%;
-  position: absolute;
+  position: relative;
 }
 .banner-desc .right {
   line-height: 1.4;
@@ -859,7 +869,8 @@ span.text-red {
 
 /* styling search bar */
 .category-serach-container {
-  margin: 10px 0px;
+  margin-top: 40px;
+ 
 }
 .search input[type="text"] {
   width: 160px;

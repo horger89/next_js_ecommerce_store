@@ -18,28 +18,18 @@ const FooterBanner = ({
 }) => {
   return (
     <div className="footer-banner-container">
-      <div className="banner-desc">
-        {/*<div className="left">
-          <p>{discount}</p>
-          <h3>{largeText1}</h3>
-          <h3>{largeText2}</h3>
-          <p>{saleTime}</p>
-        </div>*/}
-        <div className="right">
-          <p>{smallText}</p>
-          <h3>{midText}</h3>
-          <p>{desc}</p>
-          <Link href={`/product/${product}`}>
-            <button type="button">{buttonText}</button>
-          </Link>
-        </div>
-        <img
-          src={urlFor(image)}
-          width={450}
-          height={450}
-          className="footer-banner-image"
-        />
+      <div className="center">
+        <Link href={`/product/${product}`}>
+          <img
+            src={urlFor(image)}
+            alt="banner-image"
+            className="hero-banner-image"
+          />
+        </Link>
       </div>
+      {/*<p className="beats-solo">{heroBanner.smallText}</p>*/}
+      <h3>{midText}</h3>
+      <h1>{largeText1}</h1>
     </div>
   );
 };
