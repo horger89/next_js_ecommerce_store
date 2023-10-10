@@ -16,13 +16,16 @@ const Home = ({ products, bannerData, categories }) => {
         <div className="dropdown">
           <button className="dropbtn">Categories</button>
           <div className="dropdown-content dropdown-menu-center">
+            <Link legacyBehavior href="/">
+              <a>All Products</a>
+            </Link>
             {categories?.map((category) => (
-              <Link legacyBehavior key={category._id} href={`/category/${category._id}`}>
-                <a
-                  id="link"
-                  key={category._id}
-                  onClick={() => categoryHandler(category._id)}
-                >
+              <Link
+                legacyBehavior
+                key={category._id}
+                href={`/category/${category._id}`}
+              >
+                <a id="link" key={category._id}>
                   {category.name}
                 </a>
               </Link>
@@ -41,7 +44,7 @@ const Home = ({ products, bannerData, categories }) => {
       </div>
 
       <div className="products-heading">
-        <h2>Best Selling Products</h2>
+        <h2>All Products</h2>
         <p>Products of many variations</p>
       </div>
 
@@ -66,8 +69,8 @@ export const getServerSideProps = async () => {
   const categoryQuery = '*[_type == "category"]';
   const categories = await client.fetch(categoryQuery);
 
-  console.log(categories);
-  console.log(products);
+  //console.log(categories);
+  //console.log(products);
 
   return {
     props: { products, bannerData, categories },

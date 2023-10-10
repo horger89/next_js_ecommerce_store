@@ -31,8 +31,6 @@ export const StateContext = ({ children }) => {
   };
   // till here
 
-  const [categoryName, setCategoryName] = useState("*");
-
   const [showCart, setShowCart] = useState(false);
   // new code here
   const [cartItemsStored, setCartItemsStored] = useLocalStorage(
@@ -67,11 +65,6 @@ export const StateContext = ({ children }) => {
 
   let foundProduct;
   let index;
-
-  const categoryHandler = (category) => {
-    setCategoryName(category);
-  };
-  console.log(categoryName);
 
   const onAdd = (product, quantity) => {
     const chechProductInCart = cartItems.find(
@@ -226,8 +219,6 @@ export const StateContext = ({ children }) => {
         setCartItems,
         setTotalPrice,
         setTotalQuantities,
-        categoryHandler,
-        categoryName,
       }}
     >
       {children}
