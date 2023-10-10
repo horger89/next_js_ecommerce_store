@@ -2,8 +2,12 @@ import React from "react";
 import { Product, FooterBanner, HeroBanner } from "../components";
 import { client } from "../lib/client";
 import { AiOutlineSearch } from "react-icons/ai";
+import { useStateContext } from "@/context/StateContext";
+import Link from "next/link";
 
 const Home = ({ products, bannerData, categories }) => {
+  const { categoryHandler, categoryName } = useStateContext();
+
   return (
     <>
       <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
@@ -13,7 +17,15 @@ const Home = ({ products, bannerData, categories }) => {
           <button className="dropbtn">Categories</button>
           <div className="dropdown-content dropdown-menu-center">
             {categories?.map((category) => (
-              <a href="#">{category.name}</a>
+              <Link legacyBehavior key={category._id} href={`/category/${category._id}`}>
+                <a
+                  id="link"
+                  key={category._id}
+                  onClick={() => categoryHandler(category._id)}
+                >
+                  {category.name}
+                </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -45,7 +57,7 @@ const Home = ({ products, bannerData, categories }) => {
 };
 
 export const getServerSideProps = async () => {
-  const query = '*[_type == "product"]';
+  const query = `*[_type == "product"]`;
   const products = await client.fetch(query);
 
   const bannerQuery = '*[_type == "banner"]';
@@ -55,6 +67,7 @@ export const getServerSideProps = async () => {
   const categories = await client.fetch(categoryQuery);
 
   console.log(categories);
+  console.log(products);
 
   return {
     props: { products, bannerData, categories },
