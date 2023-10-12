@@ -1,11 +1,9 @@
-import product from "@/sanity-ecommerce/schemas/product";
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
 
 const Context = createContext();
 
 export const StateContext = ({ children }) => {
-  // new code here
   const useLocalStorage = (key, initialValue) => {
     const [storedValue, setStoredValue] = useState(() => {
       try {
@@ -29,39 +27,42 @@ export const StateContext = ({ children }) => {
     };
     return [storedValue, setValue];
   };
-  // till here
 
   const [showCart, setShowCart] = useState(false);
-  // new code here
+
   const [cartItemsStored, setCartItemsStored] = useLocalStorage(
     "cartItems",
     []
   );
-  // till here
+
   const [cartItems, setCartItems] = useState([]);
-  // new code here
+
   const [totalPriceStored, setTotalPriceStored] = useLocalStorage(
     "totalPrice",
     0
   );
-  // till here
+
   const [totalPrice, setTotalPrice] = useState(0);
-  // new code here
+
   const [totalQuantitiesStored, setTotalQuantitiesStored] = useLocalStorage(
     "totalQuantities",
     0
   );
-  // till here
+
   const [totalQuantities, setTotalQuantities] = useState(0);
   const [qty, setQty] = useState(1);
 
-  // new code here
   useEffect(() => {
     setCartItems(cartItemsStored);
     setTotalQuantities(totalQuantitiesStored);
     setTotalPrice(totalPriceStored);
   }, []);
-  // till here
+
+  const [searchValue, setSearchValue] = useState("");
+
+  const inputChangeHandler = (e) => {
+    setSearchValue(e.target.value);
+  };
 
   let foundProduct;
   let index;
@@ -73,17 +74,16 @@ export const StateContext = ({ children }) => {
     setTotalPrice(
       (prevTotalPrice) => prevTotalPrice + product.price * quantity
     );
-    // new code here
+
     setTotalPriceStored(
       (prevTotalPrice) => prevTotalPrice + product.price * quantity
     );
-    // till here
+
     setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity);
-    // new code here
+
     setTotalQuantitiesStored(
       (prevTotalQuantities) => prevTotalQuantities + quantity
     );
-    // till here
 
     if (chechProductInCart) {
       const updatedCartItems = cartItems.map((cartProduct) => {
@@ -95,16 +95,14 @@ export const StateContext = ({ children }) => {
       });
 
       setCartItems(updatedCartItems);
-      // new code here
+
       setCartItemsStored(updatedCartItems);
-      // till here
     } else {
       product.quantity = quantity;
 
       setCartItems([...cartItems, { ...product }]);
-      // new code here
+
       setCartItemsStored([...cartItems, { ...product }]);
-      // till here
     }
     toast.success(`${qty} ${product.name} added to the cart.`);
     setQty(1);
@@ -118,24 +116,23 @@ export const StateContext = ({ children }) => {
       (prevTotalPrice) =>
         prevTotalPrice - foundProduct.price * foundProduct.quantity
     );
-    // new code here
+
     setTotalPriceStored(
       (prevTotalPrice) =>
         prevTotalPrice - foundProduct.price * foundProduct.quantity
     );
-    // till here
+
     setTotalQuantities(
       (prevTotalQuantities) => prevTotalQuantities - foundProduct.quantity
     );
-    // new code here
+
     setTotalQuantitiesStored(
       (prevTotalQuantities) => prevTotalQuantities - foundProduct.quantity
     );
-    // till here
+
     setCartItems(newCartItems);
-    // new code here
+
     setCartItemsStored(newCartItems);
-    // till here
   };
 
   const toggleCartItemQuanitity = (id, value) => {
@@ -153,39 +150,37 @@ export const StateContext = ({ children }) => {
 
     if (value === "inc") {
       setCartItems(newCartInc);
-      // new code here
+
       setCartItemsStored(newCartInc);
-      // till here
+
       setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price);
-      // new code here
+
       setTotalPriceStored(
         (prevTotalPrice) => prevTotalPrice + foundProduct.price
       );
-      // till here
+
       setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
-      // new code here
+
       setTotalQuantitiesStored(
         (prevTotalQuantities) => prevTotalQuantities + 1
       );
-      // till here
     } else if (value === "dec") {
       if (foundProduct.quantity > 1) {
         setCartItems(newCartDec);
-        // new code here
+
         setCartItemsStored(newCartDec);
-        // till here
+
         setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price);
-        // new code here
+
         setTotalPriceStored(
           (prevTotalPrice) => prevTotalPrice - foundProduct.price
         );
-        // till here
+
         setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1);
-        // new code here
+
         setTotalQuantitiesStored(
           (prevTotalQuantities) => prevTotalQuantities - 1
         );
-        // till here
       }
     }
   };
@@ -219,6 +214,8 @@ export const StateContext = ({ children }) => {
         setCartItems,
         setTotalPrice,
         setTotalQuantities,
+        searchValue,
+        inputChangeHandler,
       }}
     >
       {children}

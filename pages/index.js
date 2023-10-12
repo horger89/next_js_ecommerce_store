@@ -1,47 +1,18 @@
 import React from "react";
-import { Product, FooterBanner, HeroBanner } from "../components";
+import {
+  Product,
+  FooterBanner,
+  HeroBanner,
+} from "../components";
 import { client } from "../lib/client";
-import { AiOutlineSearch } from "react-icons/ai";
-import { useStateContext } from "@/context/StateContext";
-import Link from "next/link";
+import CategorySearch from "@/components/CategorySearch";
 
 const Home = ({ products, bannerData, categories }) => {
-  const { categoryHandler, categoryName } = useStateContext();
-
   return (
     <>
       <HeroBanner heroBanner={bannerData.length && bannerData[0]} />
 
-      <div className="category-serach-container">
-        <div className="dropdown">
-          <button className="dropbtn">Categories</button>
-          <div className="dropdown-content dropdown-menu-center">
-            <Link legacyBehavior href="/">
-              <a>All Products</a>
-            </Link>
-            {categories?.map((category) => (
-              <Link
-                legacyBehavior
-                key={category._id}
-                href={`/category/${category._id}`}
-              >
-                <a id="link" key={category._id}>
-                  {category.name}
-                </a>
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <div className="search">
-          <form>
-            <input type="text" placeholder=" Search.." name="search" />
-            <button type="submit" className="search-icon">
-              <AiOutlineSearch />
-            </button>
-          </form>
-        </div>
-      </div>
+      <CategorySearch categories={categories} />
 
       <div className="products-heading">
         <h2>All Products</h2>
@@ -68,9 +39,6 @@ export const getServerSideProps = async () => {
 
   const categoryQuery = '*[_type == "category"]';
   const categories = await client.fetch(categoryQuery);
-
-  //console.log(categories);
-  //console.log(products);
 
   return {
     props: { products, bannerData, categories },

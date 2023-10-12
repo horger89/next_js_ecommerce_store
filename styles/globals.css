@@ -881,15 +881,15 @@ span.text-red {
 }
 
 .search {
-  margin: 0px 0px;
   float: right;
+  margin-right: 30px;
 }
 
 .search-icon {
-  font-size: 25px;
+  font-size: 30px;
   color: gray;
   cursor: pointer;
-  position: relative;
+  position: absolute;
   transition: transform 0.4s ease;
   border: none;
   background-color: transparent;
