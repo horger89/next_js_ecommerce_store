@@ -2,6 +2,8 @@ import React from "react";
 import { client } from "@/lib/client";
 import { Product } from "@/components";
 import CategorySearch from "@/components/CategorySearch";
+import { useEffect } from "react";
+import { useStateContext } from "@/context/StateContext";
 
 const SearchedProducts = ({
   products,
@@ -9,6 +11,12 @@ const SearchedProducts = ({
   searchedProducts,
   search,
 }) => {
+  const { setSearchValue } = useStateContext();
+
+  useEffect(() => {
+    setSearchValue("");
+  }, []);
+
   return (
     <div>
       <CategorySearch categories={categories} />
@@ -49,8 +57,6 @@ export const getServerSideProps = async (ctx) => {
 
   const searchQuery = `*[_type == "product" && name match '*${search}*']`;
   const searchedProducts = await client.fetch(searchQuery);
-
-  console.log(searchedProducts);
 
   return {
     props: { products, categories, searchedProducts, search },

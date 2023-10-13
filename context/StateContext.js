@@ -216,6 +216,7 @@ export const StateContext = ({ children }) => {
         setTotalQuantities,
         searchValue,
         inputChangeHandler,
+        setSearchValue,
       }}
     >
       {children}
