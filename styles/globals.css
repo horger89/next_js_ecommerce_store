@@ -941,6 +941,7 @@ span.text-red {
   background-color: #f02d34;
   color: #fff;
   margin-bottom: 25px;
+  text-align: center;
 }
 
 .loginbtn {
