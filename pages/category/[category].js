@@ -9,7 +9,7 @@ const CategoryProducts = ({ products, categories, categoryName }) => {
       <CategorySearch categories={categories} />
 
       <div className="products-heading">
-        <h2>Check out our {categoryName.name} category</h2>
+        <h2>{categoryName.name} category</h2>
         <p>{products.length} Product(s) found in this category</p>
       </div>
 
@@ -17,6 +17,17 @@ const CategoryProducts = ({ products, categories, categoryName }) => {
         {products?.map((product) => (
           <Product key={product._id} product={product} />
         ))}
+      </div>
+
+      <div className="maylike-products-wrapper">
+        <h2>Popular products</h2>
+        <div className="marquee">
+          <div className="maylike-products-container track">
+            {products.map((item) => (
+              <Product key={item._id} product={item} />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

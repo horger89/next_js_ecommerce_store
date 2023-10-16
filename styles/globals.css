@@ -204,16 +204,6 @@ span.text-red {
   transform: scale(1.1, 1.1);
 }
 
-.left-container {
-  width: 50%;
-  float: left;
-}
-
-.right-container {
-  width: 50%;
-  float: right;
-}
-
 .desc {
   position: absolute;
   right: 10%;
@@ -870,7 +860,6 @@ span.text-red {
 /* styling search bar */
 .category-serach-container {
   margin-top: 40px;
- 
 }
 .search input[type="text"] {
   width: 160px;
@@ -896,4 +885,81 @@ span.text-red {
 }
 .search-icon:hover {
   transform: scale(1.1, 1.1);
+}
+
+.left-container {
+  text-align: right;
+  width: 50%;
+  float: left;
+}
+
+.right-container {
+  text-align: left;
+  width: 50%;
+  float: right;
+}
+
+.profile-banner-container {
+  padding-top: 30px;
+  background-color: #dcdcdc;
+  border-radius: 15px;
+  height: 300px;
+  max-height: 25rem;
+  line-height: 0.9;
+  width: 100%;
+}
+
+.profile-text {
+  color: white;
+  font-size: 3em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.profile-container {
+  display: inline-flex;
+  gap: 30px;
+  margin: 40px;
+  margin-top: 50px;
+  color: #324d67;
+}
+
+.profile-image {
+  border-radius: 25px;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 5px;
+}
+
+.logoutbtn {
+  width: 100px;
+  height: 20px;
+  border-radius: 15px;
+  border: none;
+  font-size: 13px;
+  text-transform: uppercase;
+  background-color: #f02d34;
+  color: #fff;
+}
+
+.loginbtn {
+  width: 300px;
+  height: 50px;
+  border-radius: 15px;
+  border: none;
+  font-size: 20px;
+  text-transform: uppercase;
+  background-color: #f02d34;
+  color: #fff;
+  transform: scale(1, 1);
+  transition: transform 0.5s ease;
+}
+
+.loginbtn:hover {
+  transform: scale(1.1, 1.1);
+}
+
+.google-login {
+  padding-top: 130px;
+  text-align: center;
 }
