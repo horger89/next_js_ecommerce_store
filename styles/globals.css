@@ -940,6 +940,7 @@ span.text-red {
   text-transform: uppercase;
   background-color: #f02d34;
   color: #fff;
+  margin-bottom: 10px;
 }
 
 .loginbtn {

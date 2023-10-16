@@ -21,9 +21,6 @@ const Profile = ({ products }) => {
               <div className="image-container">
                 <img src={session.user.image} className="profile-image" />
               </div>
-              <button className="logoutbtn" onClick={Logout}>
-                Logout
-              </button>
             </div>
             <div className="product-detail-desc">
               <h4>Name</h4>
@@ -32,6 +29,9 @@ const Profile = ({ products }) => {
               <p>{session.user.email}</p>
             </div>
           </div>
+          <button className="logoutbtn" onClick={Logout}>
+            Logout
+          </button>
         </div>
 
         <div className="maylike-products-wrapper">
